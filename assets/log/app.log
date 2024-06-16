@@ -73,3 +73,45 @@
 2024-06-16 15:56:38,369 - ERROR - An unexpected error occurred: 'str' object has no attribute 'strftime' (classes:classes.py:87)
 2024-06-16 15:57:00,958 - ERROR - An unexpected error occurred: 'str' object has no attribute 'strftime' (classes:classes.py:87)
 2024-06-16 15:57:45,534 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T15:57:45.528687&to=2024-06-16T15:57:45.528687&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:84)
+2024-06-16 17:16:21,677 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T17:16:21.671507&to=2024-06-16T17:16:21.671507&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:81)
+2024-06-16 17:19:59,592 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T17:19:59.588314&to=2024-06-16T17:19:59.588314&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:81)
+2024-06-16 17:20:32,232 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T17:20:32.228589&to=2024-06-16T17:20:32.228589&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:81)
+2024-06-16 17:22:19,726 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T17:22:19.723144&to=2024-06-16T17:22:19.723144&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:81)
+2024-06-16 17:23:00,226 - ERROR - Request failed: No connection adapters were found for 'NEWS_API_ENDOINT_EVERYTHING?q=sex&from=2024-05-17T17:23:00.222389&to=2024-06-16T17:23:00.222389&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5' (classes:classes.py:84)
+2024-06-16 17:24:39,022 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:24:39,824 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:24:39.017714&to=2024-06-16T17:24:39.017714&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:25:19,667 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:25:21,079 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:25:19.663614&to=2024-06-16T17:25:19.663614&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:35:51,705 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:35:52,535 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:35:51.701643&to=2024-06-16T17:35:51.701643&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:37:24,983 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:37:25,462 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:37:24.978998&to=2024-06-16T17:37:24.978998&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:38:02,983 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:38:03,761 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:38:02.978485&to=2024-06-16T17:38:02.978485&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:38:04,586 - ERROR - An unexpected error occurred while sending email: Emailaddress "lalal" is not valid according to RFC 2822 standards (classes:classes.py:162)
+2024-06-16 17:39:11,143 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:39:11,934 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:39:11.139882&to=2024-06-16T17:39:11.139882&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:39:12,661 - ERROR - An unexpected error occurred while sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-422f602e802sm131250565e9.11 - gsmtp') (classes:classes.py:162)
+2024-06-16 17:44:01,677 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:44:02,157 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:44:01.673681&to=2024-06-16T17:44:01.673681&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:44:02,931 - ERROR - Failure to send email: Emailaddress "lalal" is not valid according to RFC 2822 standards (classes:classes.py:137)
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\classes.py", line 131, in send
+    yag_connection.send(to=self.receiver,
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\.venv\Lib\site-packages\yagmail\sender.py", line 157, in send
+    recipients, msg_strings = self.prepare_send(
+                              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\.venv\Lib\site-packages\yagmail\sender.py", line 120, in prepare_send
+    validate_email_with_regex(email_addr)
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\.venv\Lib\site-packages\yagmail\validate.py", line 110, in validate_email_with_regex
+    raise YagInvalidEmailAddress(emsg)
+yagmail.error.YagInvalidEmailAddress: Emailaddress "lalal" is not valid according to RFC 2822 standards
+2024-06-16 17:44:27,250 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:44:27,657 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:44:27.245085&to=2024-06-16T17:44:27.245085&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:44:29,144 - INFO - Email sent successfully to "dofef22481@morxin.com" with subject: Greeting (classes:classes.py:134)
+2024-06-16 17:45:31,731 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:45:32,109 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:45:31.725302&to=2024-06-16T17:45:31.725302&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:45:33,547 - INFO - Email sent successfully to "dofef22481@morxin.com" with subject: "Greeting" (classes:classes.py:134)
+2024-06-16 17:47:03,988 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 17:47:04,361 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=sex&from=2024-05-17T17:47:03.984618&to=2024-06-16T17:47:03.984618&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-16 17:47:05,803 - INFO - Email sent successfully to "dofef22481@morxin.com" with subject: "Greeting" (classes:classes.py:161)

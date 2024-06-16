@@ -6,7 +6,7 @@ from pprint import pprint
 
 # from dotenv import load_dotenv
 from app_utils import *
-from classes import NewsFeed
+from classes import NewsFeed, EmailService
 
 
 # Configure the logging format and level (DEBUG level is typically used for detailed diagnostic information, good for for developers or system administrators to troubleshoot issues)
@@ -28,12 +28,12 @@ if __name__ == "__main__":
     # lang = validate_language(
     #     "\n\n>> Enter a language code in ISO format (e.g., 'en' for English):  ")
 
-    print("\n\n>> Here are your 20 articles:\n")
+    # print("\n\n>> Here are your 20 articles:\n")
 
-    # articles = fetch_articles(topic, lang)
+    # print(NewsFeed("sex").download_news())
 
-    # articles_cleaned = [dict(title=article['title'], url=article['url']) for article in all_articles if article.get('title') and article.get('url')]
+    email_body = NewsFeed("sex").download_news()
 
-    # print(extract_news_data(articles))
-
-    print(NewsFeed("sex").download_news())
+    EmailService(receiver="dofef22481@morxin.com",
+                 subject="Greeting",
+                 body=email_body).send()
