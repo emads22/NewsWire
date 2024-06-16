@@ -5,6 +5,7 @@ import nltk
 import pycountry
 from nltk.corpus import words
 from nltk.data import find
+from datetime import datetime, timedelta
 from constants import *
 
 
@@ -72,8 +73,11 @@ def validate_language(prompt):
 
 def build_news_url(topic, language, apikey=os.getenv("NEWS_API_KEY")):
 
-    url = f"{NEWS_API_ENDOINT_EVERYTHING}?q={
-        topic}&language={language}&apiKey={apikey}"
+    today = datetime.now()
+    yesterday = today - timedelta(days=30)
+
+    url = f"{NEWS_API_ENDOINT_EVERYTHING}?q={topic}&from={
+        today.isoformat()}&to={yesterday.isoformat()}&language={language}&apiKey={apikey}"
 
     return url
 
@@ -100,6 +104,23 @@ def fetch_articles(topic, language='en', number=20):
 
     return []
 
+def extract_news_data(articles):
+    if not articles:
+        return None
+    
+    articles_data = "\n"
+
+    for article in articles:
+        if article.get('title') and article.get('url'):
+            articles_data += f"""
+> {article['title']}
+  {article['url']}
+"""
+    articles_data += "\n"
+    
+    return articles_data
 
 if __name__ == "__main__":
-    print(build_news_url("tesla"))
+    # print(build_news_url("tesla"))
+    articles = fetch_articles("tesla")
+    print(extract_news_data(articles))
