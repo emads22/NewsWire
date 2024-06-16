@@ -1,10 +1,11 @@
+import os
 import logging
-import re
+import requests
 import nltk
 import pycountry
 from nltk.corpus import words
 from nltk.data import find
-from constants import TOPIC_PATTERN, TOPIC_FILE, STOCKS
+from constants import *
 
 
 def download_word_list():
@@ -67,3 +68,38 @@ def validate_language(prompt):
             # Print an error message if the topic is not valid
             print(
                 "\n\n-- Please enter a language code in ISO format (e.g., 'en' for English). --")
+
+
+def build_news_url(topic, language, apikey=os.getenv("NEWS_API_KEY")):
+
+    url = f"{NEWS_API_ENDOINT_EVERYTHING}?q={
+        topic}&language={language}&apiKey={apikey}"
+
+    return url
+
+
+def fetch_articles(topic, language='en', number=20):
+    try:
+        news_url = build_news_url(topic, language)
+        response = requests.get(url=news_url)
+        response.raise_for_status()
+        content = response.json()
+        articles = content.get('articles', [])
+
+        if not articles:
+            logging.error(
+                "No articles found for the provided topic/language.")
+            return articles
+
+        return articles[:number]
+
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Request failed: {e}")
+    except Exception as e:
+        logging.error(f"An unexpected error occurred: {e}")
+
+    return []
+
+
+if __name__ == "__main__":
+    print(build_news_url("tesla"))

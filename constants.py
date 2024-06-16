@@ -1,16 +1,21 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+
+# Load environment variables from the .env file
+load_dotenv()
 
 
 ASSETS = Path(__file__).parent / "assets"
 LOG_FILE = ASSETS / "log" / "app.log"
-TOPIC_FILE = ASSETS / "resources" / "topicss.txt"
+TOPIC_FILE = ASSETS / "resources" / "topics.txt"
 
 # Define the endpoint and API key for the News API, and the topic we want to search for news
 NEWS_API_ENDOINT_EVERYTHING = "https://newsapi.org/v2/everything"
-NEWS_API_KEY = os.getenv("NEWS_API_KEY")
-SENDER_EMAIL = os.getenv("SENDER")
-SENDER_PASSWORD = os.getenv("PASSWORD")
+# NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+# SENDER_EMAIL = os.getenv("SENDER")
+# SENDER_PASSWORD = os.getenv("PASSWORD")
 DEFAULT_LANGUAGE = "en"
 
 # Validation patterns
