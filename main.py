@@ -1,15 +1,12 @@
-import re
 import logging
 import requests
 import time
-from datetime import datetime 
+import schedule
+from datetime import datetime
 import pandas as pd
-from pprint import pprint
-# from send_email import send_email
-
-# from dotenv import load_dotenv
-from app_utils import *
+from app_utils import download_word_list
 from classes import NewsFeed, EmailService
+from config import LOG_FILE
 
 
 # Configure the logging format and level (DEBUG level is typically used for detailed diagnostic information, good for for developers or system administrators to troubleshoot issues)
@@ -17,10 +14,11 @@ logging.basicConfig(filename=LOG_FILE,
                     format='%(asctime)s - %(levelname)s - %(message)s (%(module)s:%(filename)s:%(lineno)d)', level=logging.DEBUG)
 
 
-# # Load environment variables from the .env file
-# load_dotenv()
-
 download_word_list()
+
+# schedule.every().day.at("20:32").do(lambda: print("emads"))
+schedule.every().day.at("20:32").do(lambda: main())
+
 
 def main():
     # Read the contacts file into a DataFrame
@@ -34,11 +32,36 @@ def main():
         email_body = NewsFeed(interest).download_news()
 
         EmailService(receiver=receiver,
-            subject=f'Your "{interest}" News Alert: Stay Connected!',
-            body=email_body).send()
+                     subject=f'Your "{interest}" News Alert: Stay Connected!',
+                     body=email_body).send()
+
 
 # Check if the script is being run as the main program
 if __name__ == "__main__":
+
+    # # METHOD 1:
+    # while True:
+
+    #     # Periodically every 1 minute check to run program on specific time
+    #     now = datetime.now()  # Capture the current time once
+
+    #     if now.hour == 20 and now.minute == 24:
+    #         main()
+    #         # print("emads")
+
+    #     time.sleep(60)
+
+    # METHOD 2:
+    while True:
+
+        schedule.run_pending()
+
+        time.sleep(60)
+
+
+
+
+        
 
     # topic = validate_topic(
     #     "\n\n>> Enter a topic you want to get news about:  ")
@@ -67,14 +90,3 @@ if __name__ == "__main__":
     #     EmailService(receiver=receiver,
     #         subject=f"Your Daily {row['interest']} Digest: Stay Updated!",
     #         body=email_body).send()
-
-    while True:
-
-        # Periodically every 1 minute check to run program on specific time
-        now = datetime.now()  # Capture the current time once
-
-        if now.hour == 20 and now.minute == 24:
-            main()
-            # print("emads")
-
-        time.sleep(60)

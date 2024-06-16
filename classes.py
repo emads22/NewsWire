@@ -3,7 +3,7 @@ import logging
 import requests
 import yagmail
 from datetime import datetime, timedelta
-from constants import *
+from config import *
 
 
 class NewsFeed:

@@ -2,7 +2,7 @@ import os
 import yagmail
 from datetime import datetime
 # import pandas as pd
-from constants import SENDER, PASSWORD, CONTACT_FILE
+from config import SENDER, PASSWORD, CONTACT_FILE
 
 
 def send_email(receiver, subject, body):

@@ -7,7 +7,7 @@ from nltk.corpus import words
 from nltk.data import find
 from datetime import datetime, timedelta
 import pandas as pd
-from constants import *
+from config import *
 
 
 def download_word_list():

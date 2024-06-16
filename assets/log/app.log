@@ -178,3 +178,15 @@ NoneType: None
 2024-06-16 20:07:52,440 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
 2024-06-16 20:07:53,406 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=Science&from=2024-05-17T20:07:41.981211&to=2024-06-16T20:07:41.981211&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
 2024-06-16 20:07:58,929 - INFO - Email sent successfully to "jetrikesti@gufum.com" with subject: "Your "Science" News Alert: Stay Connected!" (classes:classes.py:167)
+2024-06-16 20:32:30,238 - DEBUG - Running job Job(interval=1, unit=days, do=<lambda>, args=(), kwargs={}) (__init__:__init__.py:690)
+2024-06-16 20:36:32,358 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 20:36:32,713 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=tesla&from=2024-05-17T20:36:32.346582&to=2024-06-16T20:36:32.346582&language=en&apiKey=None HTTP/1.1" 401 162 (connectionpool:connectionpool.py:549)
+2024-06-16 20:36:32,714 - ERROR - Request failed: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=tesla&from=2024-05-17T20:36:32.346582&to=2024-06-16T20:36:32.346582&language=en&apiKey=None (classes:classes.py:81)
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\classes.py", line 70, in fetch_news_articles
+    response.raise_for_status()
+  File "C:\Users\user\Documents\Database\Courses\Udemy\Ardit Sulce\3- Intermediate to Advanced Python - 10 OOP Projects\Projects\6- Automated Emails\.venv\Lib\site-packages\requests\models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=tesla&from=2024-05-17T20:36:32.346582&to=2024-06-16T20:36:32.346582&language=en&apiKey=None
+2024-06-16 20:37:53,249 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
+2024-06-16 20:37:53,713 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=tesla&from=2024-05-17T20:37:53.245148&to=2024-06-16T20:37:53.245148&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
