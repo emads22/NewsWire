@@ -1,6 +1,8 @@
 import re
 import logging
 import requests
+import time
+from datetime import datetime 
 import pandas as pd
 from pprint import pprint
 # from send_email import send_email
@@ -32,7 +34,7 @@ def main():
         email_body = NewsFeed(interest).download_news()
 
         EmailService(receiver=receiver,
-            subject=f"Your Daily {row['interest']} Digest: Stay Updated!",
+            subject=f'Your "{interest}" News Alert: Stay Connected!',
             body=email_body).send()
 
 # Check if the script is being run as the main program
@@ -46,7 +48,7 @@ if __name__ == "__main__":
 
     # print("\n\n>> Here are your 20 articles:\n")
 
-    # print(NewsFeed("sex").download_news())
+    # print(NewsFeed("tesla").download_news())
 
     # email_body = NewsFeed("sex").download_news()
 
@@ -66,4 +68,13 @@ if __name__ == "__main__":
     #         subject=f"Your Daily {row['interest']} Digest: Stay Updated!",
     #         body=email_body).send()
 
-    main()
+    while True:
+
+        # Periodically every 1 minute check to run program on specific time
+        now = datetime.now()  # Capture the current time once
+
+        if now.hour == 20 and now.minute == 24:
+            main()
+            # print("emads")
+
+        time.sleep(60)

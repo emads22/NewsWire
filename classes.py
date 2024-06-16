@@ -17,7 +17,7 @@ class NewsFeed:
         language (str): The language of the news articles (default is 'en').
         from_date (datetime): The start date for fetching articles.
         to_date (datetime): The end date for fetching articles.
-        max_articles (int): The maximum number of articles to fetch (default is 20).
+        max_articles (int): The maximum number of articles to fetch (default is 12).
     """
 
     base_url = NEWS_API_ENDOINT_EVERYTHING
@@ -29,7 +29,7 @@ class NewsFeed:
                  language: str = DEFAULT_LANGUAGE,
                  from_date: datetime = datetime.now() - timedelta(days=30),
                  to_date: datetime = datetime.now(),
-                 max_articles: int = 20) -> None:
+                 max_articles: int = 12) -> None:
         """
         Initializes a NewsFeed object with the specified parameters.
 
@@ -38,13 +38,13 @@ class NewsFeed:
             language (str, optional): The language of the news articles (default is 'en').
             from_date (datetime, optional): The start date for fetching articles (default is 30 days (1 month) ago).
             to_date (datetime, optional): The end date for fetching articles (default is current date).
-            max_articles (int, optional): The maximum number of articles to fetch (default is 20).
+            max_articles (int, optional): The maximum number of articles to fetch (default is 12).
         """
         self.interest = interest
         self.language = language
         self.from_date = from_date.isoformat()
         self.to_date = to_date.isoformat()
-        self.max_articles = max_articles
+        self.max_articles = max_articles if max_articles > 0 else 12
 
     def build_news_api_url(self) -> str:
         """
@@ -75,7 +75,7 @@ class NewsFeed:
                 logging.error(
                     "No articles found for the provided interest/language.", exc_info=True)
 
-            return articles[:self.max_articles]
+            return articles
 
         except requests.exceptions.RequestException as e:
             logging.error(f"Request failed: {e}", exc_info=True)
@@ -92,6 +92,7 @@ class NewsFeed:
             str: A formatted string containing article titles and URLs.
         """
         articles = self.fetch_news_articles()
+        n_articles = self.max_articles
 
         if not articles:
             return None
@@ -99,10 +100,15 @@ class NewsFeed:
         articles_data = "\n"
 
         for article in articles:
-            title = article.get('title')
-            url = article.get('url')
-            if title and url:
+            if n_articles == 0:
+                break
+
+            title = article.get('title', '').strip()
+            url = article.get('url', '').strip()
+
+            if title and url and "removed" not in title.lower() and "removed" not in url.lower():
                 articles_data += f"* {title}\n  {url}\n\n"
+                n_articles -= 1
 
         return articles_data
 
