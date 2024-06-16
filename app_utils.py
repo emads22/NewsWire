@@ -6,6 +6,7 @@ import pycountry
 from nltk.corpus import words
 from nltk.data import find
 from datetime import datetime, timedelta
+import pandas as pd
 from constants import *
 
 
@@ -104,10 +105,11 @@ def fetch_articles(topic, language='en', number=20):
 
     return []
 
+
 def extract_news_data(articles):
     if not articles:
         return None
-    
+
     articles_data = "\n"
 
     for article in articles:
@@ -117,10 +119,16 @@ def extract_news_data(articles):
   {article['url']}
 """
     articles_data += "\n"
-    
+
     return articles_data
 
+
+def extract_excel_data(filepath):
+    df = pd.read_excel(filepath)
+    for _, row in df.iterrows():
+        print(row['interest'])
+
+
+
 if __name__ == "__main__":
-    # print(build_news_url("tesla"))
-    articles = fetch_articles("tesla")
-    print(extract_news_data(articles))
+    print(extract_excel_data(CONTACT_FILE))

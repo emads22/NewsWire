@@ -1,6 +1,7 @@
 import re
 import logging
 import requests
+import pandas as pd
 from pprint import pprint
 # from send_email import send_email
 
@@ -19,6 +20,21 @@ logging.basicConfig(filename=LOG_FILE,
 
 download_word_list()
 
+def main():
+    # Read the contacts file into a DataFrame
+    contacts_df = pd.read_excel(CONTACT_FILE)
+
+    # Iterate through each row in the DataFrame
+    for _, row in contacts_df.iterrows():
+        interest = row['interest']
+        receiver = row['email']
+
+        email_body = NewsFeed(interest).download_news()
+
+        EmailService(receiver=receiver,
+            subject=f"Your Daily {row['interest']} Digest: Stay Updated!",
+            body=email_body).send()
+
 # Check if the script is being run as the main program
 if __name__ == "__main__":
 
@@ -32,8 +48,22 @@ if __name__ == "__main__":
 
     # print(NewsFeed("sex").download_news())
 
-    email_body = NewsFeed("sex").download_news()
+    # email_body = NewsFeed("sex").download_news()
 
-    EmailService(receiver="dofef22481@morxin.com",
-                 subject="Greeting",
-                 body=email_body).send()
+    # EmailService(receiver="dofef22481@morxin.com",
+    #              subject="Greeting",
+    #              body=email_body).send()
+
+    # df = pd.read_excel(CONTACT_FILE)
+
+    # for _, row in df.iterrows():
+    #     interest = row['interest']
+    #     receiver = row['email']
+
+    #     email_body = NewsFeed(interest).download_news()
+
+    #     EmailService(receiver=receiver,
+    #         subject=f"Your Daily {row['interest']} Digest: Stay Updated!",
+    #         body=email_body).send()
+
+    main()
