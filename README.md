@@ -25,8 +25,10 @@ The application utilizes the [News API](https://newsapi.org) to fetch news artic
 
 ## Usage
 1. Run the script using `python main.py`.
-2. The script will automatically send personalized email news alerts to the recipients listed in the `contacts.xlsx` file at 10 AM every Monday.
+2. The script will automatically send personalized email news alerts to the recipients listed in the `contacts.xlsx` file at 10:00 AM every Monday.
 3. Ensure that the email credentials provided in the `config.py` file are valid and have permission to send emails.
+
+**Note:** During development, disposable email addresses from online services were used for testing purposes.
 
 ## Contributing
 Contributions are welcome! Here are some ways you can contribute to the project:
