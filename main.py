@@ -65,4 +65,4 @@ if __name__ == "__main__":
     # Run the scheduling loop to check for scheduled tasks
     while True:
         schedule.run_pending()  # Run any pending scheduled tasks
-        time.sleep(60)  # Sleep for 1 hour before checking again
+        time.sleep(60*60)  # Sleep for 1 hour before checking again

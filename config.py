@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Define the time at which you want the task to run
-SCHEDULE_TIME = "14:17"
+SCHEDULE_TIME = "10:00"
 
 ASSETS = Path(__file__).parent / "assets"
 LOGS = ASSETS / "log"
