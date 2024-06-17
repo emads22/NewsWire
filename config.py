@@ -8,7 +8,7 @@ load_dotenv()
 
 
 ASSETS = Path(__file__).parent / "assets"
-LOGS = ASSETS / "log" 
+LOGS = ASSETS / "log"
 RESOURCES = ASSETS / "resources"
 LOG_FILE = LOGS / "app.log"
 TOPIC_FILE = RESOURCES / "topics.txt"
@@ -19,18 +19,11 @@ NEWS_API_ENDOINT_EVERYTHING = "https://newsapi.org/v2/everything"
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 DEFAULT_LANGUAGE = "en"
 
+# Email service config data
 SENDER = os.getenv("SENDER")
 PASSWORD = os.getenv("PASSWORD")
-RECEIVER = os.getenv("RECEIVER")
 
-
-# Validation patterns
-# topic consists of only word characters (letters, digits, and underscores)
-TOPIC_PATTERN = r'^\w+$'
-# language consists of exactly two lowercase letters
-LANGUAGE_PATTERN = r'^[a-z]{2}$'
-EMAIL_PATTERN = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-
+# Additional data for interest search (for people who are interested in getting stocks news)
 STOCKS = [
     "AAPL",  # Apple Inc.
     "MSFT",  # Microsoft Corporation

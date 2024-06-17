@@ -1,49 +1,73 @@
-import os
 import logging
-import requests
 import nltk
 import pycountry
 from nltk.corpus import words
 from nltk.data import find
-from datetime import datetime, timedelta
-import pandas as pd
 from config import *
 
 
 def download_word_list():
     """
     Downloads the NLTK word list if it is not already downloaded.
+
+    This function checks if the NLTK word list is available locally.
+    If not, it downloads the word list using NLTK's download function.
     """
     try:
+        # Check if the NLTK word list is available
         find('corpora/words.zip')
     except LookupError:
-        logging.warning(
-            f"NLTK word list is not already downloaded. Proceed to download it.")
+        # If the word list is not found, log a warning and download it
+        logging.warning("NLTK word list not found. Initiating download.")
         nltk.download('words')
 
 
 def load_topics():
+    """
+    Loads topics from an external file.
+
+    This function reads topics from a predefined file and returns them as a list.
+    If the file cannot be read, it logs a warning and returns an empty list.
+
+    Returns:
+        list: A list of topics loaded from the file.
+    """
     topics = []
 
     try:
+        # Open the topic file and read each line, stripping any extra whitespace
         with open(TOPIC_FILE) as f:
             topics = [line.strip() for line in f.readlines()]
     except Exception as e:
+        # Log a warning if there's an issue reading the file
         logging.warning(f"Failure in loading topics from external file: {e}")
 
     return topics
 
 
 def validate_topic(prompt):
+    """
+    Prompts the user to input a valid topic.
 
+    This function repeatedly prompts the user for a topic until a valid one is entered.
+    A valid topic is one that is either in the predefined STOCKS list or
+    in the combined list of loaded topics and NLTK words.
+
+    Args:
+        prompt (str): The prompt message to display to the user.
+
+    Returns:
+        str: A valid topic entered by the user.
+    """
     while True:
         try:
+            # Prompt the user for a topic and convert it to lowercase
             topic = input(prompt).strip().lower()
-            word_list = words.words()
-            topic_list = load_topics()
+            word_list = words.words()  # Load the NLTK word list
+            topic_list = load_topics()  # Load the topics from the external file
 
-            # validate the topic
-            if topic.upper() not in STOCKS and topic not in topic_list + word_list:
+            # Validate the topic
+            if topic.upper() not in STOCKS and topic not in (topic_list + word_list):
                 raise ValueError
 
             return topic
@@ -54,81 +78,32 @@ def validate_topic(prompt):
 
 
 def validate_language(prompt):
+    """
+    Prompts the user to input a valid language code in ISO format.
+
+    This function repeatedly prompts the user for a language code until a valid one is entered.
+    A valid language code is one that exists in the list of ISO 639-1 language codes.
+
+    Args:
+        prompt (str): The prompt message to display to the user.
+
+    Returns:
+        str: A valid language code entered by the user.
+    """
     while True:
         try:
+            # Prompt the user for a language code and convert it to lowercase
             lang_input = input(prompt).strip().lower()
             lang_iso_list = [language.alpha_2 for language in pycountry.languages if hasattr(
                 language, 'alpha_2')]
 
-            # validate the topic
+            # Validate the language code
             if lang_input not in lang_iso_list:
                 raise ValueError
 
             return lang_input
 
         except ValueError:
-            # Print an error message if the topic is not valid
+            # Print an error message if the language code is not valid
             print(
                 "\n\n-- Please enter a language code in ISO format (e.g., 'en' for English). --")
-
-
-def build_news_url(topic, language, apikey=os.getenv("NEWS_API_KEY")):
-
-    today = datetime.now()
-    yesterday = today - timedelta(days=30)
-
-    url = f"{NEWS_API_ENDOINT_EVERYTHING}?q={topic}&from={
-        today.isoformat()}&to={yesterday.isoformat()}&language={language}&apiKey={apikey}"
-
-    return url
-
-
-def fetch_articles(topic, language='en', number=20):
-    try:
-        news_url = build_news_url(topic, language)
-        response = requests.get(url=news_url)
-        response.raise_for_status()
-        content = response.json()
-        articles = content.get('articles', [])
-
-        if not articles:
-            logging.error(
-                "No articles found for the provided topic/language.")
-            return articles
-
-        return articles[:number]
-
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Request failed: {e}")
-    except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
-
-    return []
-
-
-def extract_news_data(articles):
-    if not articles:
-        return None
-
-    articles_data = "\n"
-
-    for article in articles:
-        if article.get('title') and article.get('url'):
-            articles_data += f"""
-> {article['title']}
-  {article['url']}
-"""
-    articles_data += "\n"
-
-    return articles_data
-
-
-def extract_excel_data(filepath):
-    df = pd.read_excel(filepath)
-    for _, row in df.iterrows():
-        print(row['interest'])
-
-
-
-if __name__ == "__main__":
-    print(extract_excel_data(CONTACT_FILE))

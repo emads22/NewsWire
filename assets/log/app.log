@@ -190,3 +190,4 @@ Traceback (most recent call last):
 requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://newsapi.org/v2/everything?q=tesla&from=2024-05-17T20:36:32.346582&to=2024-06-16T20:36:32.346582&language=en&apiKey=None
 2024-06-16 20:37:53,249 - DEBUG - Starting new HTTPS connection (1): newsapi.org:443 (connectionpool:connectionpool.py:1055)
 2024-06-16 20:37:53,713 - DEBUG - https://newsapi.org:443 "GET /v2/everything?q=tesla&from=2024-05-17T20:37:53.245148&to=2024-06-16T20:37:53.245148&language=en&apiKey=dcf8be6726ec4796b321c412f9fa34b5 HTTP/1.1" 200 None (connectionpool:connectionpool.py:549)
+2024-06-17 10:56:52,119 - DEBUG - Running job Job(interval=1, unit=days, do=<lambda>, args=(), kwargs={}) (__init__:__init__.py:690)
