@@ -4,8 +4,8 @@ import schedule
 import sys
 import pandas as pd
 from datetime import datetime
-from app_utils import download_word_list, format_email_body
-from newsfeed import NewsFeed
+from app_utils import format_email_body
+from news_feed import NewsFeed
 from email_service import EmailService
 from config import SCHEDULE_TIME, LOG_FILE, CONTACT_FILE
 
@@ -13,9 +13,6 @@ from config import SCHEDULE_TIME, LOG_FILE, CONTACT_FILE
 logging.basicConfig(filename=LOG_FILE,
                     format='%(asctime)s - %(levelname)s - %(message)s (%(module)s:%(filename)s:%(lineno)d)',
                     level=logging.DEBUG)
-
-# Download the NLTK word list if it is not already downloaded
-download_word_list()
 
 # Schedule the task to run weekly on the specified day and time
 schedule.every().monday.at(SCHEDULE_TIME).do(lambda: main())
