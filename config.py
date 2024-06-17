@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 # Load environment variables from the .env file
 load_dotenv()
 
+# Define the time at which you want the task to run
+SCHEDULE_TIME = "14:17"
 
 ASSETS = Path(__file__).parent / "assets"
 LOGS = ASSETS / "log"
@@ -22,6 +24,15 @@ DEFAULT_LANGUAGE = "en"
 # Email service config data
 SENDER = os.getenv("SENDER")
 PASSWORD = os.getenv("PASSWORD")
+
+# Email signature
+SIGNATURE = """
+Stay tuned for more updates, and have a great day!
+
+Best regards,
+Emads
+E>
+"""
 
 # Additional data for interest search (for people who are interested in getting stocks news)
 STOCKS = [

@@ -15,7 +15,7 @@ class NewsFeed:
         language (str): The language of the news articles (default is 'en').
         from_date (datetime): The start date for fetching articles.
         to_date (datetime): The end date for fetching articles.
-        max_articles (int): The maximum number of articles to fetch (default is 12).
+        max_articles (int): The maximum number of articles to fetch (default is 10).
     """
 
     base_url = NEWS_API_ENDOINT_EVERYTHING
@@ -25,24 +25,24 @@ class NewsFeed:
     def __init__(self,
                  interest: str,
                  language: str = DEFAULT_LANGUAGE,
-                 from_date: datetime = datetime.now() - timedelta(days=30),
+                 from_date: datetime = datetime.now() - timedelta(days=7),
                  to_date: datetime = datetime.now(),
-                 max_articles: int = 12) -> None:
+                 max_articles: int = 10) -> None:
         """
         Initializes a NewsFeed object with the specified parameters.
 
         Args:
             interest (str): The interest for which news articles are fetched.
             language (str, optional): The language of the news articles (default is 'en').
-            from_date (datetime, optional): The start date for fetching articles (default is 30 days (1 month) ago).
+            from_date (datetime, optional): The start date for fetching articles (default is 7 dayS (1 week) ago).
             to_date (datetime, optional): The end date for fetching articles (default is current date).
-            max_articles (int, optional): The maximum number of articles to fetch (default is 12).
+            max_articles (int, optional): The maximum number of articles to fetch (default is 10).
         """
         self.interest = interest
         self.language = language
         self.from_date = from_date.isoformat()
         self.to_date = to_date.isoformat()
-        self.max_articles = max_articles if max_articles > 0 else 12
+        self.max_articles = max_articles if max_articles > 0 else 10
 
     def _build_api_url(self) -> str:
         """

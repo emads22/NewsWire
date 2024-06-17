@@ -3,6 +3,7 @@
 
 # Ignore Python bytecode
 **/__pycache__/
+**/*.py[cod]
 
 # Ignore .env file 
 **/.env
@@ -12,3 +13,6 @@
 
 # Ignore Planning folder
 Planning/
+
+# Ignore app.log file in any subfolder
+**/app.log
