@@ -9,6 +9,10 @@ from news_feed import NewsFeed
 from email_service import EmailService
 from config import SCHEDULE_TIME, LOG_FILE, CONTACT_FILE
 
+
+# Create the directory for log files if it doesn't exist, and Ensure parent directories are created if they don't exist
+LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+
 # Configure the logging format and level (DEBUG level is typically used for detailed diagnostic information, good for troubleshooting issues)
 logging.basicConfig(filename=LOG_FILE,
                     format='%(asctime)s - %(levelname)s - %(message)s (%(module)s:%(filename)s:%(lineno)d)',
