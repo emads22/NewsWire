@@ -11,6 +11,15 @@ NewsWire is a Python Command-Line Interface (CLI) application based on Object-Or
 - **Scalable Contact Management**: Users are free to expand the `contacts.xlsx` file to add contacts with emails and interests, and the app will broadcast emails with 10 news articles about each topic/interest during the passing week.
 - **Logging**: Utilizes logging to record detailed information about the application's execution, including errors, warnings, and informational messages.
 
+## Technologies Used
+- **openpyxl**: A library for reading and writing Excel files.
+- **python-dotenv**: A library for managing environment variables in .env files.
+- **requests**: A library for making HTTP requests.
+- **schedule**: A library for job scheduling.
+- **yagmail**: A library for sending emails using Gmail.
+- **logging**: A module for tracking events that happen when software runs.
+- **datetime**: A module for manipulating dates and times.
+
 ## News API
 The application utilizes the [News API](https://newsapi.org) to fetch news articles based on specified interests.
 
