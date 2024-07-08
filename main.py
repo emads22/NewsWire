@@ -7,7 +7,7 @@ from datetime import datetime
 from app_utils import format_email_body
 from news_feed import NewsFeed
 from email_service import EmailService
-from config import SCHEDULE_TIME, LOG_FILE, CONTACT_FILE
+from config import SCHEDULE_TIME, LOG_FILE, CONTACT_FILE, ASCII_ART
 
 
 # Create the directory for log files if it doesn't exist, and Ensure parent directories are created if they don't exist
@@ -23,6 +23,7 @@ schedule.every().monday.at(SCHEDULE_TIME).do(lambda: main())
 
 
 def main():
+
     try:
         # Read the contacts file into a DataFrame
         contacts_df = pd.read_excel(CONTACT_FILE)
@@ -63,6 +64,8 @@ def main():
 
 
 if __name__ == "__main__":
+    # Display logo
+    print("\n\n\n\n", ASCII_ART, "\n\n")
     # Run the scheduling loop to check for scheduled tasks
     while True:
         schedule.run_pending()  # Run any pending scheduled tasks

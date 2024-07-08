@@ -1,5 +1,18 @@
 # NewsWire
 
+![NewsWire_logo](./assets/images/NewsWire_logo.png)
+
+```sh
+
+███╗   ██╗███████╗██╗    ██╗███████╗██╗    ██╗██╗██████╗ ███████╗
+████╗  ██║██╔════╝██║    ██║██╔════╝██║    ██║██║██╔══██╗██╔════╝
+██╔██╗ ██║█████╗  ██║ █╗ ██║███████╗██║ █╗ ██║██║██████╔╝█████╗  
+██║╚██╗██║██╔══╝  ██║███╗██║╚════██║██║███╗██║██║██╔══██╗██╔══╝  
+██║ ╚████║███████╗╚███╔███╔╝███████║╚███╔███╔╝██║██║  ██║███████╗
+╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝ ╚══════╝ ╚══╝╚══╝ ╚═╝╚═╝  ╚═╝╚══════╝
+                                                               
+```
+
 ## Overview
 NewsWire is a Python Command-Line Interface (CLI) application based on Object-Oriented Programming (OOP) principles. It sends personalized news alerts via email to recipients based on their specified interests. The application keeps running and performs the task weekly every Monday at 10:00 AM, broadcasting emails with 10 news articles about each topic/interest during the passing week.
 
